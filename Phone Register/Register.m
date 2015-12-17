@@ -15,7 +15,9 @@
 @end
 
 @implementation Register
-
+/*********************************************************************/
+#pragma mark - Initializacion
+/*********************************************************************/
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -45,4 +47,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*********************************************************************/
+#pragma mark - Action Methods
+/*********************************************************************/
+- (IBAction)btnLoginPressed:(id)sender {
+    [[Digits sharedInstance] authenticateWithCompletion:^(DGTSession *session, NSError *error) {
+        // Inspect session/error objects
+        
+    [[Digits sharedInstance] logOut];
+
+    }];
+    }
 @end
