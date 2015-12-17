@@ -20,6 +20,7 @@
 /*********************************************************************/
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[Digits sharedInstance] logOut];
     // Do any additional setup after loading the view, typically from a nib.
     
     DGTAuthenticateButton *authButton;
@@ -53,8 +54,11 @@
 - (IBAction)btnLoginPressed:(id)sender {
     [[Digits sharedInstance] authenticateWithCompletion:^(DGTSession *session, NSError *error) {
         // Inspect session/error objects
-        
-    [[Digits sharedInstance] logOut];
+        if (session != nil){
+            NSString *stPhone = session.phoneNumber;
+            self.lblPhone.text = [@"Teléfono: " stringByAppendingString:stPhone];
+        }
+    
 
     }];
     }
